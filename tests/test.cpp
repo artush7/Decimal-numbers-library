@@ -1,61 +1,17 @@
 #include <gtest/gtest.h>
 
-#include "/home/artush/main/c++ project/homework/Decimal numbers library/src/float_fixed.h"
+#include "/home/artush/main/c++/homework/Decimal-numbers-library/src/decimal.h"
 
-TEST(floating,add_float)
+TEST(decimal,test1)
 {
-    floating<float> a(1.5);
-    floating<float> b(2.0);
-    a.add(b);
-    EXPECT_EQ(a.get_value(),3.5);
+    Decimal *f1 = new Float<64>(9,7);
+    Decimal *fix = new Fixed<10,22>(1,2);
 }
 
-TEST(floating,add_double)
+TEST(decimal,add)
 {
-    floating<double> a(3.8);
-    floating<double> b(-1.9);
-    b.add(a);
-    EXPECT_EQ(b.get_value(),1.9);
-}
-
-TEST(floating,sub_float)
-{
-    floating<float> a(13.3);
-    floating<float> b(7.3);
-    a.subtract(b);
-    EXPECT_EQ(a.get_value(),6.0);
-}
-
-TEST(floating,sub_double)
-{
-    floating<double> a(1.35);
-    floating<double> b(0.01);
-    b.subtract(a);
-    EXPECT_DOUBLE_EQ(b.get_value(),-1.34);
-}
-
-TEST(floating,mul_float)
-{
-    floating<float> a(6.7);
-    floating<float> b(3.4);
-    a.multiply(b);
-    EXPECT_FLOAT_EQ(a.get_value(),22.78);
-}
-
-TEST(floating,div_double)
-{
-    floating<double> a(45);
-    floating<double> b(14.4);
-    a.divide(b);
-    EXPECT_FLOAT_EQ(a.get_value(),3.125);
-}
-
-
-TEST(floating,floating_div_0_Test)
-{
-    floating<double> a(45);
-    floating<double> b(0);
-    a.divide(b);
-    EXPECT_EQ(a.get_value(),45);
-    EXPECT_EQ(b.get_value(),0);
+    Decimal *f1 = new Float<32>(9,2);
+    Decimal result = *f1 + *f1;
+    Decimal *expected = new Float<32>(18,2);
+    ASSERT_EQ((result),(*expected));
 }
