@@ -13,13 +13,13 @@ public:
     ~Decimal();
 };
 
-template <int size>
-concept Size_Float = (size == 16) || (size == 32) || (size == 64);
+template <int bits>
+concept Size_Float = (bits == 16) || (bits == 32) || (bits == 64);
 
 template<int integer,int decimal>
 concept Size_Fixed = (integer + decimal == 16) || (integer + decimal == 32) || (integer + decimal == 64);
 
-template <int size>
+template <int bits>
 class Float : public Decimal
 {
 public:
@@ -39,8 +39,8 @@ public:
     bool operator ==(const Decimal& other) const override;
 };
 
-template <int size>
-Float<size>::Float(int n,int d)
+template <int bits>
+Float<bits>::Float(int n,int d)
 {
-    
+
 }
