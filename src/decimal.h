@@ -1,4 +1,4 @@
-
+#include <concepts>
 #define float illegal
 #define double illegal
 
@@ -9,7 +9,7 @@ public:
     Decimal();
     virtual Decimal operator +(Decimal& other) = 0;
     virtual bool operator ==(const Decimal& other) const = 0;
-    ~Decimal();
+    virtual ~Decimal();
 };
 
 template <int bits>
@@ -21,8 +21,11 @@ concept Size_Fixed = (integer + decimal == 16) || (integer + decimal == 32) || (
 template <int bits>
 class Float : public Decimal
 {
+private:
+    int sign;
+    int exponent;
 public:
-    Float(int n,int d);
+    Float(int numerator,int denominator);
 
     Decimal operator +(Decimal& other) override;
     bool operator ==(const Decimal& other) const override;
@@ -39,7 +42,8 @@ public:
 };
 
 template <int bits>
-Float<bits>::Float(int n,int d)
+Float<bits>::Float(int numerator,int denominator)
 {
-
+    sign = (numenator > 0) == (denominator > 0) ? 0 : 1;
+    
 }

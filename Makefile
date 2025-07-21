@@ -1,4 +1,4 @@
-CXX = clang++
+CXX = clang++ -std=c++23
 CXXFLAGS = -Wall -Wextra -g -Wunreachable-code -Wunreachable-code-loop-increment -Wunreachable-code-return
 
 SRC_DIR = src
